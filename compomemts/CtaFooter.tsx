@@ -1,16 +1,22 @@
 import "./CtaFooter.css";
 
-const PHONES = ["01270469567", "01556009567"];
+const PHONES = ["01270469567", "01556009567" ,"01006147731"];
+
+// 📍 حط هنا رابط المعرض من خرائط جوجل (Share ثم Copy link)
+const MAP_URL = "https://maps.app.goo.gl/p8F8S7ZV5kVrrDNR6?g_st=ic";
+
+// رقم دولي لروابط الاتصال: 01270469567 → +201270469567
+const intl = (phone: string) => `+2${phone}`;
 
 const LINKS = [
   { label: "الأبواب", href: "/doors/wood" },
   { label: "الشبابيك", href: "/windows" },
   { label: "youtube", href: "https://www.youtube.com/@boulanagy8802" },
-{ label: "facebook", href: "https://www.facebook.com/share/14tU9N3fTrE/?mibextid=wwXIfrk" },
-{ label: "tiktok", href: "/l" },
-{ label: "instagram", href: "/l2" },
-
+  { label: "facebook", href: "https://www.facebook.com/share/14tU9N3fTrE/?mibextid=wwXIfrk" },
+  { label: "tiktok", href: "tiktok.com/@boulanagy" },
 ];
+
+const isExternal = (href: string) => href.startsWith("http");
 
 export default function CtaFooter() {
   return (
@@ -26,15 +32,15 @@ export default function CtaFooter() {
           </div>
 
           <div className="cta__actions">
-  {PHONES.map((p) => (
-    <a key={p} className="cta__phone" href="tel:+201270469567">
-      {p}
-    </a>
-  ))}
-  <a className="cta__btn" href="tel:+201270469567">
-    اتصل الآن
-  </a>
-</div>
+            {PHONES.map((p) => (
+              <a key={p} className="cta__phone" href={`tel:${intl(p)}`}>
+                {p}
+              </a>
+            ))}
+            <a className="cta__btn" href={`tel:${intl(PHONES[1])}`}>
+              اتصل الآن
+            </a>
+          </div>
         </div>
       </section>
 
@@ -52,7 +58,12 @@ export default function CtaFooter() {
             <ul className="footer__list">
               {LINKS.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href}>{l.label}</a>
+                  <a
+                    href={l.href}
+                    {...(isExternal(l.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  >
+                    {l.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -63,11 +74,15 @@ export default function CtaFooter() {
             <ul className="footer__list">
               {PHONES.map((p) => (
                 <li key={p}>
-                  <a href={`tel:${p}`}>{p}</a>
+                  <a href={`tel:${intl(p)}`}>{p}</a>
                 </li>
               ))}
-              <li>[العنوان]</li>
-              <li>[مواعيد العمل]</li>
+              <li>
+                <a href={MAP_URL} target="_blank" rel="noopener noreferrer">
+                      مصر - القاهره/ 5 ش الترول عين شمس الغربيه بجوار مسجد التعاون محطه الونش
+                </a>
+              </li>
+              
             </ul>
           </div>
         </div>

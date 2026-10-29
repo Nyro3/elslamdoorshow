@@ -96,7 +96,7 @@ export default function CartView() {
         <div className="cart__actions">
           <a
             className="shop__btn"
-            href={waLink(PHONES[0], message)}
+            href={waLink(PHONES[1], message)}
             target="_blank"
             rel="noopener noreferrer"
           >

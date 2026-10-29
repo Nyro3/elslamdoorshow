@@ -451,3 +451,67 @@
     text-align: center;
   }
 }
+
+
+/* ================= فلتر البحث في صفحات الأقسام (ضيف الجزء ده في آخر shop.css) ================= */
+.shop__filterbar {
+  display: grid;
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.shop__search {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.7rem 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--brown-text);
+  background-color: #fff;
+  border: 1px solid rgba(75, 44, 29, 0.35);
+  border-radius: 0.25rem;
+}
+
+.shop__search:focus-visible,
+.shop__filter:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.shop__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.shop__filter {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.45rem 1rem;
+  color: var(--brown-dark);
+  background-color: #fff;
+  border: 1px solid rgba(75, 44, 29, 0.35);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.shop__filter:hover {
+  background-color: var(--sand);
+}
+
+.shop__filter--on {
+  background-color: var(--brown-dark);
+  border-color: var(--brown-dark);
+  color: var(--cream);
+}
+
+.shop__filter--on:hover {
+  background-color: var(--brown-dark);
+}
+
+@media (max-width: 480px) {
+  .shop__search {
+    max-width: none;
+  }
+}

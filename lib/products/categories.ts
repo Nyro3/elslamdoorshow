@@ -1,5 +1,11 @@
 import type { CategorySlug, ProductColor } from "./types";
 
+/** كلمة بحث سريعة بتظهر كزرار فلتر في صفحة القسم */
+export interface SearchTerm {
+  label: string; // الاسم اللي بيظهر على الزرار وبيتم البحث بيه
+  also?: string[]; // مرادفات/صيغ تانية بتتحسب مطابقة (مفرد/جمع، عربي/إنجليزي)
+}
+
 export interface CategoryMeta {
   slug: CategorySlug;
   title: string;
@@ -7,6 +13,7 @@ export interface CategoryMeta {
   href: string; // مسار الصفحة
   defaultSizes: string[]; // بالسنتيمتر (عرض×ارتفاع)
   defaultColors: ProductColor[];
+  searchTerms: SearchTerm[]; // أزرار الفلتر السريع في صفحة القسم
 }
 
 export const COLOR_PRESETS: ProductColor[] = [
@@ -30,6 +37,10 @@ export const CATEGORIES: CategoryMeta[] = [
     href: "/doors/wood",
     defaultSizes: ["80×200", "90×200", "100×210"],
     defaultColors: preset("بني", "جوزي", "بيج"),
+    searchTerms: [
+      { label: "ابواب شقة", also: ["باب شقة", "ابواب شقق", "باب شقق"] },
+      { label: "ابواب غرفة", also: ["باب غرف", "ابواب غرف"] }, // "غرف" بتطابق غرفة وغرف
+    ],
   },
   {
     slug: "armored-doors",
@@ -38,6 +49,15 @@ export const CATEGORIES: CategoryMeta[] = [
     href: "/doors/armored",
     defaultSizes: ["90×200", "100×210"],
     defaultColors: preset("بني", "جوزي", "رمادي", "أسود"),
+    searchTerms: [
+      { label: "باب 90" },
+      { label: "باب 100" },
+      { label: "باب 110" },
+      { label: "باب 120" },
+      { label: "باب 150" },
+      { label: "باب 180" },
+      { label: "باب 200" },
+    ],
   },
   {
     slug: "interior-doors",
@@ -46,6 +66,12 @@ export const CATEGORIES: CategoryMeta[] = [
     href: "/doors/interior",
     defaultSizes: ["70×200", "80×200", "90×200"],
     defaultColors: preset("أبيض", "بيج", "بني"),
+    searchTerms: [
+      { label: "WPC" },
+      { label: "CPL" },
+      { label: "Malamine", also: ["melamine", "ميلامين", "ملامين"] },
+      { label: "PVC" },
+    ],
   },
   {
     slug: "windows",
@@ -54,6 +80,10 @@ export const CATEGORIES: CategoryMeta[] = [
     href: "/windows",
     defaultSizes: ["100×100", "120×120", "150×120"],
     defaultColors: preset("أبيض", "ألومنيوم طبيعي", "بني", "أسود"),
+    searchTerms: [
+      { label: "شباك", also: ["شبابيك"] },
+      { label: "بلكونة", also: ["بلكون"] },
+    ],
   },
 ];
 

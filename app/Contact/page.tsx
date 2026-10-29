@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 // نفس أرقام الفوتر
-const PHONES = ["01270469567", "01556009567"];
+const PHONES = ["01270469567", "01556009567" ,"01006147731"];
 
 // TODO: املأهم لما تجهزهم — لو فاضيين مش هيظهروا في الصفحة
 const ADDRESS: string = "";
@@ -91,7 +91,7 @@ export default function ContactPage() {
 
               <form
                 className="contact__form"
-                action={waLink(PHONES[0])}
+                action={waLink(PHONES[1])}
                 method="get"
                 target="_blank"
               >
